@@ -1,0 +1,32 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2024-2-7
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -t 00:10:00
+#SBATCH -J trimmomatic_001
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user emblap@hotmail.se
+#SBATCH --output=trimmomatic_001_output.fastq
+#SBATCH --reservation=uppmax2024-2-7_2
+#SBATCH -e error_trimmomatic_001
+
+# Load modules
+module load bioinfo-tools
+module load trimmomatic/0.39
+
+PROJDIR=../../rawdata/2_Beganovic_2023/DNA_reads/short_reads
+echo $PROJDIR
+echo $PROJDIR/SRR24413065_1.fastq.gz
+
+trimmomatic PE \
+-threads 2 \
+-trimlog log_trimmomatic.txt \
+-summary summary_trimmomatic.txt \
+$PROJDIR/SRR24413065_1.fastq.gz $PROJDIR/SRR24413065_2.fastq.gz \
+/home/embla/Genome-analysis-proj2/analysis_output/trimmomatic_001/trimmomatic_forward_paired.fastq.gz /home/embla/Genome-analysis-proj2/analysis_output/trimmomatic_001/trimmomatic_forward_unpaired.fastq.gz /home/embla/Genome-analysis-proj2/analysis_output/trimmomatic_001/trimmomatic_reverse_paired.fastq.gz /home/embla/Genome-analysis-proj2/analysis_output/trimmomatic_001/trimmomatic_reverse_unpaired.fastq.gz \
+ILLUMINACLIP:TruSeq2-PE.fa:2:30:10 \
+LEADING:25 \
+TRAILING:25 \
+SLIDINGWINDOW:4:20 \
+MINLEN:292
