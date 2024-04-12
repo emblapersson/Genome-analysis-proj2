@@ -1,0 +1,31 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2024-2-7
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -t 00:30:00
+#SBATCH -J bwa_pilon_001
+#SBATCH -e error_bwa_pilon
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user emblap@hotmail.se
+#SBATCH --output=bwa_pilon.out
+#SBATCH --reservation=uppmax2024-2-7_3
+
+# Load modules
+module load bioinfo-tools
+module load htslib/1.19
+module load bwa/0.7
+module load samtools/1.19
+module load Pilon/1.24
+
+# Commands
+bwa index /home/embla/Genome-analysis-proj2/analysis_output/flye/assembly.fasta 
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/flye/assembly.fasta /home/embla/Genome-analysis-proj2/analysis_output/trimmomatic_001/trimmomatic_forward_paired.fastq.gz /home/embla/Genome-analysis-proj2/analysis_output/trimmomatic_001/trimmomatic_reverse_paired.fastq.gz > bwa_alignment.sam
+
+samtools view -b bwa_alignment.sam > bwa_alignment.bam
+samtools sort bwa_alignment.bam -o bwa_sorted_alignment.bam
+samtools index bwa_sorted_alignment.bam 
+
+java -jar $PILON_HOME/pilon.jar --genome /home/embla/Genome-analysis-proj2/analysis_output/flye/assembly.fasta --frags bwa_sorted_alignment.bam --output /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon --threads 2
+rm bwa_alignment.bam bwa_sorted_alignment.bam bwa_alignment.sam
+
