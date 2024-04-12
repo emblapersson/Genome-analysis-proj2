@@ -1,0 +1,22 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2024-2-7
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -t 00:20:00
+#SBATCH -J fastqc_DNA_002
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user emblap@hotmail.se
+#SBATCH --output=fastqc_dna_002_output
+#SBATCH --reservation=uppmax2024-2-7_2
+#SBATCH -e error_fastqc_dna_002
+
+# Load modules
+module load bioinfo-tools
+module load FastQC/0.11.9
+
+# commands
+fastqc ../../data/trimmed_data/trimmomatic_forward_paired.fastq.gz -o /home/embla/Genome-analysis-proj2/analysis_output/fastqc_DNA_002
+fastqc ../../data/trimmed_data/trimmomatic_forward_unpaired.fastq.gz -o /home/embla/Genome-analysis-proj2/analysis_output/fastqc_DNA_002
+fastqc ../../data/trimmed_data/trimmomatic_reverse_paired.fastq.gz -o /home/embla/Genome-analysis-proj2/analysis_output/fastqc_DNA_002
+fastqc ../../data/trimmed_data/trimmomatic_reverse_unpaired.fastq.gz -o /home/embla/Genome-analysis-proj2/analysis_output/fastqc_DNA_002

@@ -1,0 +1,21 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2024-2-7
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -t 00:20:00
+#SBATCH -J fastqc_DNA_001
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user emblap@hotmail.se
+#SBATCH --output=fastqc_dna_001_output.fastq
+#SBATCH --reservation=uppmax2024-2-7_2
+#SBATCH -e error_fastqc_dna_001
+
+# Load modules
+module load bioinfo-tools
+module load FastQC/0.11.9
+
+# commands
+fastqc ../../rawdata/2_Beganovic_2023/DNA_reads/short_reads/SRR24413065_1.fastq.gz -o /home/embla/Genome-analysis-proj2/analysis_output/fastqc_DNA_001
+fastqc ../../rawdata/2_Beganovic_2023/DNA_reads/short_reads/SRR24413065_2.fastq.gz -o /home/embla/Genome-analysis-proj2/analysis_output/fastqc_DNA_001
+
