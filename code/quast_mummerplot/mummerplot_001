@@ -1,0 +1,25 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2024-2-7
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 2
+#SBATCH -t 00:10:00
+#SBATCH -J mummerplot_001
+#SBATCH -e error_mummerplot
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user emblap@hotmail.se
+#SBATCH --output=mummerplot.out
+#SBATCH --reservation=uppmax2024-2-7_3
+
+# Load modules
+module load bioinfo-tools
+module load MUMmer/4.0.0rc1
+
+# Commands
+cd /home/embla/Genome-analysis-proj2/analysis_output/quast_mummerplot
+
+nucmer --prefix nucmer --threads 2 \
+/home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/reference_genome/HP126_genome.fasta /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta 
+
+mummerplot --filter -R /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/reference_genome/HP126_genome.fasta -Q /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta -l *.delta
+
