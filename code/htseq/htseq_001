@@ -1,0 +1,23 @@
+#!/bin/bash -l
+#SBATCH -A uppmax2024-2-7
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 4
+#SBATCH -t 06:00:00
+#SBATCH -J htseq_001
+#SBATCH -e error_htseq
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user emblap@hotmail.se
+#SBATCH --output=htseq.out
+
+# Load modules
+module load bioinfo-tools
+module load htseq/2.0.2
+
+# Commands
+htseq-count -f=bam --type=CDS -i=ID -r=pos -s=yes /home/embla/Genome-analysis-proj2/code/rna_mapping/bwa_rna_mapping_hp126a.bam /home/embla/Genome-analysis-proj2/analysis_output/prokka/mygenome_shortened.gff > /home/embla/Genome-analysis-proj2/analysis_output/htseq/htseq_hp126a
+htseq-count -f=bam --type=CDS -i=ID -r=pos -s=yes /home/embla/Genome-analysis-proj2/code/rna_mapping/bwa_rna_mapping_hp126b.bam /home/embla/Genome-analysis-proj2/analysis_output/prokka/mygenome_shortened.gff > /home/embla/Genome-analysis-proj2/analysis_output/htseq/htseq_hp126b
+htseq-count -f=bam --type=CDS -i=ID -r=pos -s=yes /home/embla/Genome-analysis-proj2/code/rna_mapping/bwa_rna_mapping_hp126c.bam /home/embla/Genome-analysis-proj2/analysis_output/prokka/mygenome_shortened.gff > /home/embla/Genome-analysis-proj2/analysis_output/htseq/htseq_hp126c
+htseq-count -f=bam --type=CDS -i=ID -r=pos -s=yes /home/embla/Genome-analysis-proj2/code/rna_mapping/bwa_rna_mapping_r7a.bam /home/embla/Genome-analysis-proj2/analysis_output/prokka/mygenome_shortened.gff > /home/embla/Genome-analysis-proj2/analysis_output/htseq/htseq_r7a
+htseq-count -f=bam --type=CDS -i=ID -r=pos -s=yes /home/embla/Genome-analysis-proj2/code/rna_mapping/bwa_rna_mapping_r7b.bam /home/embla/Genome-analysis-proj2/analysis_output/prokka/mygenome_shortened.gff > /home/embla/Genome-analysis-proj2/analysis_output/htseq/htseq_r7b
+htseq-count -f=bam --type=CDS -i=ID -r=pos -s=yes /home/embla/Genome-analysis-proj2/code/rna_mapping/bwa_rna_mapping_r7c.bam /home/embla/Genome-analysis-proj2/analysis_output/prokka/mygenome_shortened.gff > /home/embla/Genome-analysis-proj2/analysis_output/htseq/htseq_r7c
