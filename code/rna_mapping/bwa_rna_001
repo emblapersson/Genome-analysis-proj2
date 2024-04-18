@@ -29,17 +29,17 @@ wait
 
 samtools view -b bwa_rna_mapping_hp126c.sam > bwa_rna_mapping_hp126c.bam
 rm bwa_rna_mapping_hp126c.sam
-samtools sort bwa_rna_mapping_hp125c.bam -o bwa_rna_mapping_hp126c.bam
+samtools sort bwa_rna_mapping_hp126c.bam -o bwa_rna_mapping_hp126c.bam
 samtools index bwa_rna_mapping_hp126c.bam
 
 samtools view -b bwa_rna_mapping_hp126b.sam > bwa_rna_mapping_hp126b.bam
 rm bwa_rna_mapping_hp126b.sam
-samtools sort bwa_rna_mapping_hp125b.bam -o bwa_rna_mapping_hp126b.bam
+samtools sort bwa_rna_mapping_hp126b.bam -o bwa_rna_mapping_hp126b.bam
 samtools index bwa_rna_mapping_hp126b.bam
 
 samtools view -b bwa_rna_mapping_hp126a.sam > bwa_rna_mapping_hp126a.bam
 rm bwa_rna_mapping_hp126a.sam
-samtools sort bwa_rna_mapping_hp125a.bam -o bwa_rna_mapping_hp126a.bam
+samtools sort bwa_rna_mapping_hp126a.bam -o bwa_rna_mapping_hp126a.bam
 samtools index bwa_rna_mapping_hp126a.bam
 
 samtools view -b bwa_rna_mapping_r7c.sam > bwa_rna_mapping_r7c.bam
