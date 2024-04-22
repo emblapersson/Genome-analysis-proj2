@@ -18,41 +18,41 @@ module load samtools/1.19
 
 # Commands
 bwa index /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta
-bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516459_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516459_2.fastq.gz > bwa_rna_mapping_hp126c.sam &
-bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516460_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516460_2.fastq.gz > bwa_rna_mapping_hp126b.sam &
-bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516461_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516461_2.fastq.gz > bwa_rna_mapping_hp126a.sam &
-bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516462_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516462_2.fastq.gz > bwa_rna_mapping_r7c.sam &
-bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516463_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516463_2.fastq.gz > bwa_rna_mapping_r7b.sam &
-bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516464_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516464_2.fastq.gz > bwa_rna_mapping_r7a.sam &
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516459_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516459_2.fastq.gz > /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126c.sam &
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516460_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516460_2.fastq.gz > /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126b.sam &
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516461_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516461_2.fastq.gz > /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126a.sam &
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516462_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516462_2.fastq.gz > /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7c.sam &
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516463_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516463_2.fastq.gz > /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7b.sam &
+bwa mem /home/embla/Genome-analysis-proj2/analysis_output/bwa_pilon/bwa_pilon.fasta /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516464_1.fastq.gz /home/embla/Genome-analysis-proj2/rawdata/2_Beganovic_2023/RNA_reads/SRR24516464_2.fastq.gz > /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7a.sam &
 
 wait
 
-samtools view -b bwa_rna_mapping_hp126c.sam > bwa_rna_mapping_hp126c.bam
-rm bwa_rna_mapping_hp126c.sam
+samtools view -b /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126c.sam > bwa_rna_mapping_hp126c.bam
+rm /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126c.sam
 samtools sort bwa_rna_mapping_hp126c.bam -o bwa_rna_mapping_hp126c.bam
 samtools index bwa_rna_mapping_hp126c.bam
 
-samtools view -b bwa_rna_mapping_hp126b.sam > bwa_rna_mapping_hp126b.bam
-rm bwa_rna_mapping_hp126b.sam
+samtools view -b /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126b.sam > bwa_rna_mapping_hp126b.bam
+rm /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126b.sam
 samtools sort bwa_rna_mapping_hp126b.bam -o bwa_rna_mapping_hp126b.bam
 samtools index bwa_rna_mapping_hp126b.bam
 
-samtools view -b bwa_rna_mapping_hp126a.sam > bwa_rna_mapping_hp126a.bam
-rm bwa_rna_mapping_hp126a.sam
+samtools view -b /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126a.sam > bwa_rna_mapping_hp126a.bam
+rm /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_hp126a.sam
 samtools sort bwa_rna_mapping_hp126a.bam -o bwa_rna_mapping_hp126a.bam
 samtools index bwa_rna_mapping_hp126a.bam
 
-samtools view -b bwa_rna_mapping_r7c.sam > bwa_rna_mapping_r7c.bam
-rm bwa_rna_mapping_r7c.sam
+samtools view -b /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7c.sam > bwa_rna_mapping_r7c.bam
+rm /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7c.sam
 samtools sort bwa_rna_mapping_r7c.bam -o bwa_rna_mapping_r7c.bam
 samtools index bwa_rna_mapping_r7c.bam
 
-samtools view -b bwa_rna_mapping_r7b.sam > bwa_rna_mapping_r7b.bam
-rm bwa_rna_mapping_r7b.sam
+samtools view -b /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7b.sam > bwa_rna_mapping_r7b.bam
+rm /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7b.sam
 samtools sort bwa_rna_mapping_r7b.bam -o bwa_rna_mapping_r7b.bam
 samtools index bwa_rna_mapping_r7b.bam
 
-samtools view -b bwa_rna_mapping_r7a.sam > bwa_rna_mapping_r7a.bam
-rm bwa_rna_mapping_r7a.sa
+samtools view -b /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7a.sam > bwa_rna_mapping_r7a.bam
+rm /proj/uppmax2024-2-7/nobackup/work/embla_bwa_rna_mapping_r7a.sam
 samtools sort bwa_rna_mapping_r7a.bam -o bwa_rna_mapping_r7a.bam
 samtools index bwa_rna_mapping_r7a.bam
