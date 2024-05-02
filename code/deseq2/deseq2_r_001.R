@@ -86,3 +86,9 @@ df <- as.data.frame(colData(dds_filtered))
 pheatmap(assay(ntd)[select,], cluster_rows=FALSE, show_rownames=TRUE,
          cluster_cols=FALSE, annotation_col=df)
 
+# PCA plot
+vst <- vst(dds)
+plotPCA(vst)
+
+vst_filtered <- vst(dds_filtered)
+plotPCA(vst_filtered)
