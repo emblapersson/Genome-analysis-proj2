@@ -13,7 +13,7 @@ directory <- "/Users/emblapersson/Downloads/htseq/"
 sampleFiles <- grep("htseq",list.files(directory),value=TRUE)
 sampleTable <- data.frame(sampleName = sampleFiles,
                           fileName = sampleFiles,
-                          condition = c("hp126", "hp126", "hp126", "r7", "r7", "r7")) #lägg till en till hp126
+                          condition = c("hp126", "hp126", "hp126", "r7", "r7", "r7"))
 sampleTable$condition <- factor(sampleTable$condition)
 
 #Load libraries
